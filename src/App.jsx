@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { MapPin, MessageCircle, Star, Plus, Minus, ShoppingBag, Clock, ShieldCheck, Award } from 'lucide-react';
 
-// Sabhi products aur unke sahi rates
 const MENU_DATA = [
   { id: 1, name: "Special Chole Bhature", fullPrice: 110, halfPrice: 60, img: "https://images.unsplash.com/photo-1626074353765-517a681e40be?w=500", tag: "Bestseller", desc: "Premium fluffy bhature with signature black chole." },
   { id: 2, name: "Amritsari Chole Kulche", fullPrice: 80, halfPrice: 45, img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500", tag: "Hot Seller", desc: "Butter toasted kulche served with spicy chole." },
@@ -9,7 +8,7 @@ const MENU_DATA = [
   { id: 4, name: "Chole Samosa Chaat", fullPrice: 70, halfPrice: 40, img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500", tag: "Must Try", desc: "Crispy samosas crushed and topped with spicy chole." },
   { id: 5, name: "Crispy Samosa (Plain)", fullPrice: 34, halfPrice: 17, img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400", tag: "Quick Bite", desc: "Classic potato samosa with green & red chutney." },
   { id: 6, name: "Hot Gulab Jamun", fullPrice: 50, halfPrice: 25, img: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=500", tag: "Sweet", desc: "Pure Desi Ghee khoya gulab jamun (2 pcs full)." },
-  { id: 7, name: "Special Kulhad Lassi", fullPrice: 60, halfPrice: null, img: "https://images.unsplash.com/photo-1543353071-087f9d5f27fb?w=500", tag: "Refreshing", desc: "Thick creamy sweet lassi served in mitti kulhad." }
+  { id: 7, name: "Special Kulhad Lassi", fullPrice: 60, halfPrice: null, img: "https://cdn.pixabay.com/photo/2017/08/16/15/03/lassi-2647793_1280.jpg", tag: "Refreshing", desc: "Thick creamy sweet lassi served in mitti kulhad." }
 ];
 
 export default function RajendraProfessionalWebsite() {
@@ -71,9 +70,14 @@ export default function RajendraProfessionalWebsite() {
         </h2>
 
         {MENU_DATA.map((item) => (
-          <div key={item.id} className="bg-white rounded-3xl p-4 shadow-sm border border-gray-100 flex gap-4 transition-transform active:scale-[0.98]">
+          <div key={item.id} className="bg-white rounded-3xl p-4 shadow-sm border border-gray-100 flex gap-4">
             <div className="relative w-24 h-24 flex-shrink-0">
-              <img src={item.img} className="w-full h-full object-cover rounded-2xl shadow-md" alt={item.name} />
+              <img 
+                src={item.img} 
+                className="w-full h-full object-cover rounded-2xl shadow-md" 
+                alt={item.name}
+                onError={(e) => { e.target.src = "https://via.placeholder.com/150?text=Food"; }} 
+              />
               <div className="absolute -top-2 -left-2 bg-green-600 text-white text-[8px] font-bold px-2 py-0.5 rounded-full uppercase">100% Veg</div>
             </div>
             
@@ -129,7 +133,7 @@ export default function RajendraProfessionalWebsite() {
             </div>
           )}
 
-          <button onClick={sendOrder} className="w-full bg-[#25D366] text-white py-4 rounded-2xl flex items-center justify-between px-6 shadow-xl shadow-green-100 transition-transform active:scale-95">
+          <button onClick={sendOrder} className="w-full bg-[#25D366] text-white py-4 rounded-2xl flex items-center justify-between px-6 shadow-xl transition-transform active:scale-95">
             <div className="text-left">
               <p className="text-[10px] font-bold opacity-80">SUBTOTAL</p>
               <p className="text-2xl font-black italic tracking-tighter">₹{total}</p>
@@ -142,4 +146,4 @@ export default function RajendraProfessionalWebsite() {
       )}
     </div>
   );
-}
+        }
