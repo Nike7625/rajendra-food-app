@@ -5,7 +5,7 @@ const MENU_DATA = [
   { id: 1, name: "Special Chole Bhature", fullPrice: 110, halfPrice: 60, img: "https://lh3.googleusercontent.com/d/1ds2DFk6T4exJehYoJ-qGq5XGoWjRlCH_", tag: "Bestseller", desc: "Our legendary signature fluffy bhature with black chole." },
   { id: 2, name: "Amritsari Chole Kulche", fullPrice: 80, halfPrice: 45, img: "https://lh3.googleusercontent.com/d/1PfpPHH3N3t6_nMjl4KtK_93IH_r71DdQ", tag: "Hot Seller", desc: "Authentic Amritsari kulcha with butter & spicy chole." },
   { id: 3, name: "Chole Chawal", fullPrice: 110, halfPrice: 60, img: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=500", tag: "Comfort", desc: "Long-grain Basmati rice served with special gravy." },
-  { id: 4, name: "Chole Samosa Chaat", fullPrice: 70, halfPrice: 40, img: "https://lh3.googleusercontent.com/u/0/d/1PfpPHH3N3t6_nMjl4KtK_93IH_r71DdQ=w10002", tag: "Must Try", desc: "Crispy samosas crushed & mixed with tangy chole." },
+  { id: 4, name: "Chole Samosa Chaat", fullPrice: 70, halfPrice: 40, img: "https://lh3.googleusercontent.com/d/1b0DznOaRLtpdl7vGIxEnZ2eVx3726CoF", tag: "Must Try", desc: "Crispy samosas crushed & mixed with tangy chole." },
   { id: 5, name: "Crispy Samosa (Plain)", fullPrice: 34, halfPrice: 17, img: "https://lh3.googleusercontent.com/d/1uR4krs77HauohZteHAdGcaDOEGV_YZZ_", tag: "Quick Bite", desc: "Classic aloo samosa served with red & green chutney." },
   { id: 6, name: "Hot Gulab Jamun", fullPrice: 50, halfPrice: 25, img: "https://lh3.googleusercontent.com/d/1RjniB7WJezoO3X8vR0ugl--N__Y1zvk5", tag: "Sweet", desc: "Hot, soft khoya gulab jamuns dipped in syrup." },
   { id: 7, name: "Special Kulhad Lassi", fullPrice: 60, halfPrice: null, img: "https://lh3.googleusercontent.com/d/1dsHD3BnPZQqGyH8PadqoUbekeAqo1pdz", tag: "Refreshing", desc: "Thick creamy malai lassi served in traditional kulhad." }
@@ -55,7 +55,7 @@ export default function RajendraProfessionalWebsite() {
     cart.forEach(i => msg += `• ${i.name} x ${i.qty} = ₹${i.price * i.qty}%0A`);
     msg += `--------------------------%0A`;
     msg += `*Total Amount: ₹${total}*%0A%0A`;
-    msg += `_Payment will be done via QR/UPI._`;
+    msg += `_Payment via QR Code / UPI._`;
     
     window.open(`https://wa.me/919311293607?text=${msg}`, '_blank');
     setIsAddressModalOpen(false);
@@ -112,27 +112,26 @@ export default function RajendraProfessionalWebsite() {
           ))}
         </div>
 
-        {/* PAYMENT QR SECTION */}
+        {/* PAYMENT QR SECTION UPDATED */}
         <div className="max-w-xl mx-auto bg-white rounded-[40px] p-8 text-center shadow-2xl border border-orange-100 mb-40">
            <div className="flex items-center justify-center gap-2 mb-6 text-orange-600 font-black italic uppercase tracking-widest">
               <CreditCard size={24} /> Pay via QR Code
            </div>
            <div className="bg-gray-50 p-4 rounded-3xl inline-block mb-4 border-2 border-dashed border-gray-200">
-             {/* Yahan aapki QR wali image ka direct link */}
-              <img src="https://lh3.googleusercontent.com/u/0/d/1PfpPHH3N3t6_nMjl4KtK_93IH_r71DdQ=w10003" className="w-48 h-48 md:w-64 md:h-64 object-contain" alt="Payment QR" referrerPolicy="no-referrer" />
+              <img src="https://lh3.googleusercontent.com/d/1Mzn2s-4gkxYdbDWdKiMtbwZf-fKaZRly" className="w-48 h-48 md:w-64 md:h-64 object-contain" alt="Payment QR" referrerPolicy="no-referrer" />
            </div>
            <p className="text-gray-800 font-black text-xl mb-1 italic uppercase tracking-tighter">UPI ID: 8287957144@ptsbi</p>
-           <p className="text-gray-400 text-sm font-bold uppercase tracking-widest">Paytm / GPay / PhonePe</p>
+           <p className="text-gray-400 text-sm font-bold uppercase tracking-widest">Scan to Pay using any UPI App</p>
         </div>
       </div>
 
       {/* ADDRESS POPUP MODAL */}
       {isAddressModalOpen && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
-          <div className="bg-white w-full max-w-md rounded-[40px] p-8 shadow-2xl">
+          <div className="bg-white w-full max-w-md rounded-[40px] p-8 shadow-2xl animate-in zoom-in-95 duration-200">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-black italic uppercase text-gray-800 tracking-tighter">Delivery Details</h2>
-              <button onClick={() => setIsAddressModalOpen(false)} className="text-gray-400 hover:text-black"><X size={24}/></button>
+              <button onClick={() => setIsAddressModalOpen(false)} className="text-gray-400 hover:text-black transition-colors"><X size={24}/></button>
             </div>
             <form onSubmit={finalOrderSubmit} className="space-y-4">
               <div>
@@ -142,7 +141,7 @@ export default function RajendraProfessionalWebsite() {
               </div>
               <div>
                 <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Full Delivery Address</label>
-                <textarea required rows="3" placeholder="Flat No, Street, Area Name" className="w-full bg-gray-50 border-none rounded-2xl py-4 px-6 focus:ring-2 focus:ring-orange-500" 
+                <textarea required rows="3" placeholder="House No, Street, Area Name" className="w-full bg-gray-50 border-none rounded-2xl py-4 px-6 focus:ring-2 focus:ring-orange-500" 
                   onChange={(e) => setCustomerInfo({...customerInfo, address: e.target.value})} />
               </div>
               <div>
@@ -150,7 +149,7 @@ export default function RajendraProfessionalWebsite() {
                 <input type="text" placeholder="Near Hospital, School etc." className="w-full bg-gray-50 border-none rounded-2xl py-4 px-6 focus:ring-2 focus:ring-orange-500" 
                   onChange={(e) => setCustomerInfo({...customerInfo, landmark: e.target.value})} />
               </div>
-              <button type="submit" className="w-full bg-[#25D366] text-white py-5 rounded-3xl font-black italic uppercase text-lg shadow-xl shadow-green-100 hover:scale-[1.02] transition-transform">
+              <button type="submit" className="w-full bg-[#25D366] text-white py-5 rounded-3xl font-black italic uppercase text-lg shadow-xl shadow-green-100 hover:scale-[1.02] active:scale-95 transition-all">
                 Complete Order on WhatsApp
               </button>
             </form>
@@ -168,11 +167,11 @@ export default function RajendraProfessionalWebsite() {
                  <span className="absolute -top-2 -right-2 bg-black text-white text-[10px] font-bold w-6 h-6 flex items-center justify-center rounded-full">{cart.length}</span>
                </div>
                <div>
-                 <p className="text-xs font-bold text-gray-400 uppercase">Grand Total</p>
+                 <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Grand Total</p>
                  <p className="text-3xl font-black italic text-gray-900 tracking-tighter">₹{total}</p>
                </div>
             </div>
-            <button onClick={() => setIsAddressModalOpen(true)} className="bg-[#25D366] text-white px-10 py-5 rounded-3xl flex items-center gap-3 shadow-2xl shadow-green-100 hover:scale-105 transition-transform active:scale-95">
+            <button onClick={() => setIsAddressModalOpen(true)} className="bg-[#25D366] text-white px-10 py-5 rounded-3xl flex items-center gap-3 shadow-2xl shadow-green-100 hover:scale-105 active:scale-95 transition-all">
               <span className="font-black italic text-xl uppercase tracking-tighter">Check Out Now</span>
               <MessageCircle size={28} fill="white" className="text-[#25D366]" />
             </button>
